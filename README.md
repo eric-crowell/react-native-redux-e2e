@@ -5,11 +5,11 @@ An example project for React Native &amp; Redux tested with e2e tool Detox
 
 ### Jest Test Runner
 
-The end-to-end tool Detox supplies scripts that run with `jest`. Might be possible with `vitest` with more experimentation and custom configurations/scripts.
+The tests run with `jest` since Detox supplies _setup_ and _takedown_ scripts compatible with that tool. It might be possible to run with `vitest` with more experimentation and custom configurations/scripts.
 
 ### ADB Process Errors
 
-In the workflow, there'll be a repeating output of...
+In the GitHub Action workflow, there'll be a repeating output of...
 
 ```sh
 /Users/runner/Library/Android/sdk/platform-tools/adb shell getprop sys.boot_completed

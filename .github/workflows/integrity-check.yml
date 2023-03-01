@@ -8,7 +8,7 @@ on:
 jobs:
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
 
@@ -38,7 +38,7 @@ jobs:
         with:
           api-level: 30
           target: google_apis
-          arch: x86
+          arch: x86_64
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
           force-avd-creation: false
