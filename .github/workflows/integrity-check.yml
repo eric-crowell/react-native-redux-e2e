@@ -24,9 +24,9 @@ jobs:
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 23
+          api-level: 24
           target: default
-          arch: x86_64
+          arch: x86
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
           force-avd-creation: false
