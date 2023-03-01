@@ -29,4 +29,7 @@ jobs:
           arch: x86_64
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
-          script: ./gradlew 'yarn test'
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: yarn test
