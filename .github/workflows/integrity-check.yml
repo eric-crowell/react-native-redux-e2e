@@ -24,8 +24,8 @@ jobs:
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
-          target: google_apis
+          api-level: 23
+          target: default
           arch: x86_64
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
