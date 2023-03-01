@@ -33,7 +33,17 @@ jobs:
             ~/.android/adb*
           key: avd-30
 
-      - name: Run tests
+      - name: create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          force-avd-creation: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching."
+
+      - name: Run React Native tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -41,7 +51,7 @@ jobs:
           arch: x86_64
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
-          force-avd-creation: true
+          force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: yarn test
