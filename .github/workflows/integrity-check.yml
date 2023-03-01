@@ -33,9 +33,6 @@ jobs:
             ~/.android/avd/*
             ~/.android/adb
           key: macos-reactnative
-          restore-keys: |
-            avd-30
-            v6-gradle|macOS
 
       - name: Install Node Dependencies
         if: steps.reactnative-cache.outputs.cache-hit != 'true'
