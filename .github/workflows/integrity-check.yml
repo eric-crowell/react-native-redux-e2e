@@ -30,7 +30,7 @@ jobs:
         with:
           path: |
             ~/.android/avd/*
-            ~/.android/adb*
+            ~/.android/adb/*
           key: avd-30
 
       - name: create AVD and generate snapshot for caching
