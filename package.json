@@ -8,7 +8,7 @@
     "web": "expo start --web",
     "prebuild": "expo prebuild --platform android",
     "build": "detox build --configuration android.emu.release",
-    "test": "detox test --configuration android.emu.release --headless"
+    "test": "detox test --reuse --configuration android.emu.release --headless"
   },
   "dependencies": {
     "expo": "~48.0.4",
