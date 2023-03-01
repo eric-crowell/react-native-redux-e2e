@@ -28,6 +28,9 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_3a
+          cores: 2
+          ram-size: 2048M
+          sdcard-path-or-size: 100M
           avd-name: Pixel_3a_API_30
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
