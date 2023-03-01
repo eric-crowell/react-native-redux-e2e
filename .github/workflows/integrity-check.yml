@@ -8,7 +8,7 @@ on:
 jobs:
 
   test:
-    runs-on: macos-latest
+    runs-on: macos-11
 
     steps:
 
@@ -25,15 +25,11 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          target: aosp_atd
-          arch: x86
+          target: google_apis
+          arch: x86_64
           profile: pixel_3a
-          cores: 2
-          ram-size: 2048M
-          sdcard-path-or-size: 100M
           avd-name: Pixel_3a_API_30
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          channel: canary
           script: yarn test
