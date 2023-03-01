@@ -29,4 +29,4 @@ jobs:
           arch: x86_64
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
-          script: yarn test
+          script: ./gradlew 'yarn test'
