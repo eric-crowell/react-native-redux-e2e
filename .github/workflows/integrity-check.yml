@@ -24,10 +24,10 @@ jobs:
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
-          target: default
+          api-level: 29
+          target: google_apis
           arch: x86_64
-          profile: Nexus 6
+          profile: pixel_3a
           avd-name: Pixel_3a_API_30
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
