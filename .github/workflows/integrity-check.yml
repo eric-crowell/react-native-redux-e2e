@@ -22,27 +22,34 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'yarn'
 
-      - run: yarn install
+      - name: Build Cache
+        uses: actions/cache@v3
+        id: reactnative-cache
+        with:
+          path: |
+            !/node_modules
+            ~/app/build
+            ~/.android/avd/*
+            ~/.android/adb
+          key: macos-reactnative
+          restore-keys: |
+            avd-30
+            v6-gradle|macOS
 
-      - run: yarn build
+      - name: Install Node Dependencies
+        if: steps.reactnative-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Build Android APK
+        if: steps.reactnative-cache.outputs.cache-hit != 'true'
+        run: yarn build
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
-        
-      - name: AVD cache
-        uses: actions/cache@v3
-        id: avd-cache
-        with:
-          path: |
-            ~/app/build/**/*
-            ~/.android/avd/*
-            ~/.android/adb/*
-          key: avd-30
 
       - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
+        if: steps.reactnative-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
