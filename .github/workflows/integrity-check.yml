@@ -8,7 +8,7 @@ on:
 jobs:
 
   test:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
 
@@ -21,15 +21,19 @@ jobs:
 
       - run: yarn install
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'adopt'
+          cache: 'gradle'
+
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 24
-          target: default
+          api-level: 30
+          target: google_apis
           arch: x86
           profile: pixel_3a
           avd-name: Pixel_3a_API_30
-          force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: true
           script: yarn test
