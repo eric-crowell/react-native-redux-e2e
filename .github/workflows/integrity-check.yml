@@ -21,6 +21,8 @@ jobs:
 
       - run: yarn install
 
+      - run: yarn build
+
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
         
