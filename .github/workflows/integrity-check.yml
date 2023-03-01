@@ -27,7 +27,7 @@ jobs:
           api-level: 30
           target: default
           arch: x86_64
-          profile: pixel_3a
+          profile: Nexus 6
           avd-name: Pixel_3a_API_30
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
