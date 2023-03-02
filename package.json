@@ -11,6 +11,7 @@
     "test": "detox test --configuration android.emu.release --headless"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "expo": "~48.0.4",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "^1.4.4",
