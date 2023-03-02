@@ -13,7 +13,7 @@ The project uses Android emulation to run the Metro bundle. It is the most widel
 
 ### GitHub MacOS Runner
 
-Android Debug Bridge (ADB) service for emulation does _not_ reliably run on Ubuntu Linux; therefore, MacOS is preferred.
+Android Debug Bridge (ADB) service for emulation does _not_ reliably run on Ubuntu Linux (from experience); therefore, **MacOS** is the preferred runner. Not sure if it's due to how `reactivecircus/android-emulator-runner@v2` is setup or something else. 
 
 ### ADB Process Errors
 
