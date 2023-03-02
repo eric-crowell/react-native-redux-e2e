@@ -52,9 +52,6 @@ jobs:
         if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn build
 
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v2
-
       - name: create AVD and generate snapshot for caching
         if: steps.emulator-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2

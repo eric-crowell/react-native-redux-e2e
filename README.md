@@ -15,6 +15,16 @@ The project uses Android emulation to run the Metro bundle. It is the most widel
 
 Android Debug Bridge (ADB) service for emulation does _not_ reliably run on Ubuntu Linux (from experience); therefore, **MacOS** is the preferred runner. Not sure if it's due to how `reactivecircus/android-emulator-runner@v2` is setup or something else. 
 
+# Self installing APK
+
+Letting Detox handle the installation of the APK app on emulator results in the following error in the workflow...
+
+```sh
+ChildProcessError: '/Users/runner/Library/Android/sdk/platform-tools/adb -s emulator-5554 shell pm install -r -g -t /data/local/tmp/detox/Application.apk' failed with code null
+```
+
+The solution is to install the APK app in the emulator before running the Detox tests. This is the purpose of the `yarn adb:install` and `yarn adb:install:test` scripts.
+
 ### ADB Process Errors
 
 In the GitHub Action workflow, there'll be a repeating output of...
@@ -29,4 +39,4 @@ This is normal. The action is waiting on the emulator to boot.
 
 ### Average Run Time
 
-Without cache on the first run, the workflow takes about 32 minutes to complete. With cache, the workflow takes about 5 minutes.
+Without cache on the first run, the workflow takes about 32 minutes to complete. With all cache, the workflow takes about 5 minutes.
