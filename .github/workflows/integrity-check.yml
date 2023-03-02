@@ -24,7 +24,7 @@ jobs:
           node-version: '18'
           cache: 'yarn'
 
-      - name: Build APK Build Cache
+      - name: APK Build Cache
         uses: actions/cache@v3
         id: build-cache
         with:
@@ -32,7 +32,7 @@ jobs:
             ./android/app/build
           key: ${{ runner.os }}-apk-${{ hashFiles('./src') }}
       
-      - name: Build AVD Emulator Cache
+      - name: AVD Emulator Cache
         uses: actions/cache@v3
         id: emulator-cache
         with:
