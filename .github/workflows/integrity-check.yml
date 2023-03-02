@@ -22,27 +22,20 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Build Node Cache
-        uses: actions/cache@v3
-        id: node-cache
-        with:
-          path: ~/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          cache: 'yarn'
 
       - name: Build Android Cache
         uses: actions/cache@v3
         id: android-cache
         with:
           path: |
-            ~/app/build
+            ~/android/app/build
             ~/.android/avd/*
             ~/.android/adb
           key: ${{ runner.os }}-android
 
       - name: Install Node Dependencies
-        if: steps.node-cache.outputs.cache-hit != 'true'
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Build Android APK
         if: steps.android-cache.outputs.cache-hit != 'true'
