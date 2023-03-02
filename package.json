@@ -8,8 +8,9 @@
     "web": "expo start --web",
     "prebuild": "expo prebuild --platform android",
     "build": "detox build --configuration android.emu.release",
-    "adb:install": "adb install android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk",
-    "test": "yarn adb:install && detox test --headless --configuration android.emu.release --reuse"
+    "adb:install": "adb install android/app/build/outputs/apk/release/app-release.apk",
+    "adb:install:test": "adb install android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk",
+    "test": "yarn adb:install && yarn adb:install:test && detox test --headless --configuration android.emu.release --reuse"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
