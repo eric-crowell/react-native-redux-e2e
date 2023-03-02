@@ -1,5 +1,5 @@
-# react-native-redux-e2e
-An example project for React Native &amp; Redux tested with e2e tool Detox
+# React Native Redux E2E
+An example [React Native](https://reactnative.dev/) project for [Redux Toolkit](https://github.com/reduxjs/redux-toolkit) CI that runs [Detox](https://wix.github.io/Detox/) end-to-end tests against a [Metro bundler](https://facebook.github.io/metro/) build.
 
 ## Notes
 
@@ -7,9 +7,13 @@ An example project for React Native &amp; Redux tested with e2e tool Detox
 
 The tests run with `jest` since Detox supplies _setup_ and _takedown_ scripts compatible with that tool. It might be possible to run with `vitest` with more experimentation and custom configurations/scripts.
 
-## GitHub MacOS Runner
+### Android Device
 
-ADB (service for emulation) does not reliably run on Ubuntu Linux; therefor, MacOS is preferred.
+The project uses Android emulation to run the Metro bundle. It is the most widely compatible for local development.
+
+### GitHub MacOS Runner
+
+Android Debug Bridge (ADB) service for emulation does _not_ reliably run on Ubuntu Linux; therefore, MacOS is preferred.
 
 ### ADB Process Errors
 
@@ -25,4 +29,4 @@ This is normal. The action is waiting on the emulator to boot.
 
 ### Average Run Time
 
-Without cache, the workflow takes about 15 minutes to complete.
+Without cache on the first run, the workflow takes about 32 minutes to complete. With cache, the workflow takes about 6 minutes.
