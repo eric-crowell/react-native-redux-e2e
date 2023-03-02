@@ -5,13 +5,14 @@ on:
     branches:
       - main
 
+env:
+  ADB_INSTALL_TIMEOUT: 30
+  ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 60
+
 jobs:
 
   test:
     runs-on: macos-latest
-    env:
-      ADB_INSTALL_TIMEOUT: '30'
-      ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: '60'
 
     steps:
 
