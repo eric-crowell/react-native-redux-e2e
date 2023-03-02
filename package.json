@@ -8,7 +8,8 @@
     "web": "expo start --web",
     "prebuild": "expo prebuild --platform android",
     "build": "detox build --configuration android.emu.release",
-    "test": "detox test --configuration android.emu.release --headless --loglevel trace --force-adb-install"
+    "install": "adb install path/to/the/file.apk",
+    "test": "yarn install && detox test --headless --configuration android.emu.release --reuse"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
