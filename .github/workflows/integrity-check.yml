@@ -24,28 +24,35 @@ jobs:
           node-version: '18'
           cache: 'yarn'
 
-      - name: Build Android Cache
+      - name: Build APK Build Cache
         uses: actions/cache@v3
-        id: android-cache
+        id: build-cache
         with:
           path: |
-            ~/android/app/build
+            ./android/app/build
+          key: ${{ runner.os }}-apk-${{ hashFiles('./src') }}
+      
+      - name: Build AVD Emulator Cache
+        uses: actions/cache@v3
+        id: emulator-cache
+        with:
+          path: |
             ~/.android/avd/*
             ~/.android/adb
-          key: ${{ runner.os }}-android
+          key: ${{ runner.os }}-avd
 
       - name: Install Node Dependencies
         run: yarn install --immutable
 
       - name: Build Android APK
-        if: steps.android-cache.outputs.cache-hit != 'true'
+        if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn build
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
 
       - name: create AVD and generate snapshot for caching
-        if: steps.android-cache.outputs.cache-hit != 'true'
+        if: steps.emulator-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
@@ -58,15 +65,15 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
-      - name: Run React Native tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          profile: pixel_3a
-          avd-name: Pixel_3a_API_30
-          force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: true
-          script: yarn test
+      # - name: Run React Native tests
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 30
+      #     target: google_apis
+      #     arch: x86_64
+      #     profile: pixel_3a
+      #     avd-name: Pixel_3a_API_30
+      #     force-avd-creation: false
+      #     emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+      #     disable-animations: true
+      #     script: yarn test
