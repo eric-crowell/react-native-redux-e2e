@@ -8,7 +8,7 @@
     "web": "expo start --web",
     "prebuild": "expo prebuild --platform android",
     "build": "detox build --configuration android.emu.release",
-    "test": "detox test --configuration android.emu.release --headless --loglevel trace"
+    "test": "detox test --configuration android.emu.release --headless --loglevel trace --force-adb-install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
