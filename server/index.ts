@@ -1,27 +1,8 @@
 import express from 'express';
-import { createEntityAdapter } from '@reduxjs/toolkit';
-import type { Post } from '../src/app/services/post';
+import { mockStateGet, mockStateUpdateOne } from './state';
 
 const app = express();
 const port = 3000;
-
-const adapter = createEntityAdapter<Post>()
-let state;
-
-export const getMockState = () => {
-  if (!state) {
-    state = adapter.getInitialState();
-    state = adapter.setAll(state, [
-      { id: 1, name: 'A sample post', fetched_at: new Date().toUTCString() },
-      {
-        id: 2,
-        name: 'A post about rtk-query',
-        fetched_at: new Date().toUTCString(),
-      },
-    ]);
-  }
-  return state;
-}
 
 app.get('/time/:offset', async (req, res) => {
     console.log('Received request for time');
@@ -39,11 +20,10 @@ app.get('/time/:offset', async (req, res) => {
 });
 
 app.get('/posts/:id', async (req, res) => {
+    console.log('Received request for post');
     const { id } = req.params as { id: string }
-    state = adapter.updateOne(state, {
-      id,
-      changes: { fetched_at: new Date().toUTCString() },
-    })
+    mockStateUpdateOne(Number(id));
+    const state = mockStateGet();
     res.status(200).json(state.entities[id]);
 });
 

@@ -1,6 +1,12 @@
 # React Native Redux E2E
 An example [React Native](https://reactnative.dev/) project for [Redux Toolkit](https://github.com/reduxjs/redux-toolkit) CI that runs [Detox](https://wix.github.io/Detox/) end-to-end tests against a [Metro bundler](https://facebook.github.io/metro/) build.
 
+<div align="center">
+
+<img width="250" src="img/app-screenshot.webp" alt="App Screenshot" />
+
+</div>
+
 ## Notes
 
 ### Jest Tests

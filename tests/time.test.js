@@ -1,29 +1,20 @@
-import { mockServer } from "./mock/mockServer";
-
-const server = mockServer();
-
 async function doesNotHaveText(ele, text) {
   try {
     await expect(ele).toHaveText(text);
-    throw new Error(`Element ${testId} should not have text ${text}`);
+    return false;
   } catch (error) {
-    return;
+    return true;
   }
 }
 
-describe('Example', () => {
+describe('Time', () => {
   beforeAll(async () => {
-    server.listen()
     await device.launchApp();
   });
 
   beforeEach(async () => {
     await device.reloadReactNative();
   });
-
-  afterEach(() => server.resetHandlers())
-
-  afterAll(() => server.close())
 
   it('should have time title', async () => {
     const timeTitle = element(by.id('time-title'));
@@ -43,7 +34,10 @@ describe('Example', () => {
 
     // Wait for the date time text to be updated
     await new Promise(resolve => setTimeout(resolve, 800));
-    await doesNotHaveText(dateTimeText, 'unknown');
+    if(!await doesNotHaveText(dateTimeText, 'unknown')) {
+      throw new Error('Date time text should not have unknown text');
+      return;
+    }
   });
 
 });

@@ -5,6 +5,7 @@ import Counter from './features/counter/Counter';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import TimeDisplay from './features/time/Time';
+import Post from './features/post/Post';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           label="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
           offset="-5:00"
         />
+        <Post id={1} />
         <StatusBar style="auto" />
       </View>
     </Provider>

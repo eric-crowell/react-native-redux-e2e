@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         gap: 7,
         flexWrap: 'wrap',
+        marginLeft: 12,
+        marginRight: 12,
     },
     textTitle: {
         fontSize: 24,

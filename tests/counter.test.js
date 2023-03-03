@@ -1,4 +1,4 @@
-describe('Example', () => {
+describe('Counter', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
