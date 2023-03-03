@@ -12,7 +12,7 @@
     "adb:install": "adb install android/app/build/outputs/apk/release/app-release.apk",
     "adb:install:test": "adb install android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk",
     "adb:reverse": "adb reverse tcp:3000 tcp:3000",
-    "test": "yarn adb:install && yarn adb:install:test && detox test --headless --configuration android.emu.release --reuse",
+    "test": "(yarn server &) && yarn adb:install && yarn adb:install:test && detox test --headless --configuration android.emu.release --reuse && pkill -f yarn",
     "test:local": "yarn adb:install && yarn adb:install:test && detox test --configuration android.emu.release --reuse --debug-synchronization 200"
   },
   "dependencies": {
