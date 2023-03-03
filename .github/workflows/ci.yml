@@ -28,13 +28,13 @@ jobs:
           node-version: '18'
           cache: 'yarn'
 
-      - name: APK Build Cache
-        uses: actions/cache@v3
-        id: build-cache
-        with:
-          path: |
-            ./android/app/build
-          key: ${{ runner.os }}-apk-${{ hashFiles('./src') }}
+      # - name: APK Build Cache
+      #   uses: actions/cache@v3
+      #   id: build-cache
+      #   with:
+      #     path: |
+      #       ./android/app/build
+      #     key: ${{ runner.os }}-apk-${{ hashFiles('./src') }}
       
       - name: AVD Emulator Cache
         uses: actions/cache@v3
@@ -48,9 +48,9 @@ jobs:
       - name: Install Node Dependencies
         run: yarn install --immutable
 
-      - name: Build Android APK
-        if: steps.build-cache.outputs.cache-hit != 'true'
-        run: yarn build
+      # - name: Build Android APK
+      #   if: steps.build-cache.outputs.cache-hit != 'true'
+      #   run: yarn build
 
       - name: create AVD and generate snapshot for caching
         if: steps.emulator-cache.outputs.cache-hit != 'true'

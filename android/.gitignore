@@ -4,7 +4,15 @@
 
 # Android/IntelliJ
 #
-build/
+build/*
+app/build/generated/*
+app/build/intermediates/*
+app/build/tmp/*
+app/build/outputs/logs/*
+app/build/outputs/native-debug-symbols/*
+app/build/outputs/sdk-dependencies/*
+app/build/outputs/apk/**/*.json
+app/build/outputs/apk/**/*-debug*
 .idea
 .gradle
 local.properties
@@ -13,5 +21,3 @@ local.properties
 
 # Bundle artifacts
 *.jsbundle
-
-!app/build/outputs/apk/
