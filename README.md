@@ -61,4 +61,4 @@ This is normal. The action is waiting on the emulator to boot.
 
 ### Average Run Time
 
-Without cache on the first run, the workflow takes about 30 - 40 minutes to complete. With all cache, the workflow takes about 5 - 10 minutes.
+Without cache on the first run, the workflow takes about 30 - 40 minutes to complete. With all cache, the workflow takes about 10 - 15 minutes.
