@@ -7,6 +7,22 @@ An example [React Native](https://reactnative.dev/) project for [Redux Toolkit](
 
 </div>
 
+## How to Use
+
+1. Clone the project `git clone `
+2. Install dependencies `yarn install`
+3. Setup a local [Pixel 3a API 30 Android Virtual Device](https://developer.android.com/studio/run/managing-avds).
+4. Start the **Pixel 3a API 30 Virtual Device**
+5. Install the release packages with `yarn adb:install` (after virtual device has started)
+6. Redirect ADB ports to local mock server with `yarn adb:redirect`
+7. Run tests `yarn test`
+
+After developing, to rerun the tests...
+
+1. Build new APK apps with `yarn build`
+2. Install the release packages with `yarn adb:install`
+3. Run the tests: `yarn test`
+
 ## Notes
 
 ### Jest Tests

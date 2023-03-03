@@ -9,10 +9,11 @@
     "server": "ts-node server/index.ts",
     "prebuild": "expo prebuild --platform android",
     "build": "detox build --configuration android.emu.release",
-    "adb:install": "adb install android/app/build/outputs/apk/release/app-release.apk",
+    "adb:install": "yarn adb:install:release && yarn adb:install:test",
+    "adb:install:release": "adb install android/app/build/outputs/apk/release/app-release.apk",
     "adb:install:test": "adb install android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk",
     "adb:reverse": "adb reverse tcp:3000 tcp:3000",
-    "test": "(yarn server &) && yarn adb:install && yarn adb:install:test && detox test --headless --configuration android.emu.release --reuse && pkill -f yarn",
+    "test": "(yarn server > /dev/null 2>&1 &) && detox test --headless --configuration android.emu.release --reuse && pkill -f yarn",
     "test:local": "yarn adb:install && yarn adb:install:test && detox test --configuration android.emu.release --reuse --debug-synchronization 200"
   },
   "dependencies": {
