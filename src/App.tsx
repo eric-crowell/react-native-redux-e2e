@@ -1,13 +1,23 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Counter from './features/counter/Counter';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import TimeDisplay from './features/time/Time';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text testID="welcome">Redux Toolkit Test App</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Counter />
+        <TimeDisplay
+          label="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+          offset="-5:00"
+        />
+        <StatusBar style="auto" />
+      </View>
+    </Provider>
   );
 }
 

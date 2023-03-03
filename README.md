@@ -15,7 +15,7 @@ The project uses Android emulation to run the Metro bundle. It is the most widel
 
 Android Debug Bridge (ADB) service for emulation does _not_ reliably run on Ubuntu Linux (from experience); therefore, **MacOS** is the preferred runner. Not sure if it's due to how `reactivecircus/android-emulator-runner@v2` is setup or something else. 
 
-# Self installing APK
+### Self installing APK
 
 Letting Detox handle the installation of the APK app on emulator results in the following error in the workflow...
 
@@ -39,4 +39,4 @@ This is normal. The action is waiting on the emulator to boot.
 
 ### Average Run Time
 
-Without cache on the first run, the workflow takes about 32 minutes to complete. With all cache, the workflow takes about 5 minutes.
+Without cache on the first run, the workflow takes about 30 - 40 minutes to complete. With all cache, the workflow takes about 5 - 10 minutes.

@@ -10,6 +10,15 @@ module.exports = {
     }
   },
   apps: {
+    'android.debug': {
+      type: 'android.apk',
+      binaryPath: 'android/app/build/outputs/apk/debug/app-debug.apk',
+      testBinaryPath: 'android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk',
+      build: 'cd android ; ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug ; cd -',
+      reversePorts: [
+        8081
+      ]
+    },
     'android.release': {
       type: 'android.apk',
       binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
@@ -26,6 +35,10 @@ module.exports = {
     }
   },
   configurations: {
+    'android.emu.debug': {
+      device: 'emulator',
+      app: 'android.debug'
+    },
     'android.emu.release': {
       device: 'emulator',
       app: 'android.release'

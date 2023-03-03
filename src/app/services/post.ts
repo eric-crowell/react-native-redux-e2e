@@ -7,12 +7,12 @@ export interface Post {
 }
 
 export const postApi = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: '/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
   reducerPath: 'postApi',
   tagTypes: ['Posts'],
   endpoints: (build) => ({
     getPost: build.query<Post, number>({
-      query: (id) => `posts/${id}`,
+      query: (id) => `/posts/${id}`,
       providesTags: (_result, _err, id) => [{ type: 'Posts', id }],
     }),
   }),
