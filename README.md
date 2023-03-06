@@ -7,7 +7,7 @@ An example [React Native](https://reactnative.dev/) project for [Redux Toolkit](
 
 </div>
 
-## How to Use
+## How to Setup Locally
 
 1. Clone the project `git clone `
 2. Install dependencies `yarn install`
